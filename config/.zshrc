@@ -21,6 +21,12 @@ add-zsh-hook precmd _update_vcs_info_msg
 export PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
 export MANPATH="/usr/local/share/man:${MANPATH}"
 
+Check-DisuseFormula () {
+  for package in $(brew list); do
+    echo -n $package: $(brew uses --installed $package | wc -l) | grep " 0"
+  done
+}
+
 ## set GNU tools
 
 ### coreutils
@@ -49,6 +55,7 @@ export CARGO_HOME="${HOME}/.cargo"
 export PATH="${CARGO_HOME}/bin:${PATH}"
 
 ## set rbenv
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 eval "$(rbenv init -)"
 
 ## set ghq
