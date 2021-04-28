@@ -53,8 +53,6 @@ mac_apps:
     name: Xcode
   - id: 682658836
     name: GarageBand
-  - id: 539883307 
-    name: LINE
 
 defaults_bool:
   # iTunesの半分星を有効化
@@ -66,3 +64,9 @@ defaults_bool:
   # Dockの拡大機能を有効化
   - domain: com.apple.dock
     key: magnification
+
+defaults_string:
+  # スクリーンショットの場所を変更
+  - domain: com.apple.screencapture
+    key: location
+    value: ~/Pictures/
