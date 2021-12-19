@@ -1,0 +1,63 @@
+## set dotfiles root
+DOTFILE="${HOME}/ghq/github.com/glassenthu/dotfiles"
+
+## set zshrc (via https://gist.github.com/mollifier/4979906)
+ZSHRC_USEFUL="${DOTFILE}/config/zshrc_useful.sh"
+test -f "${ZSHRC_USEFUL}" && source ${ZSHRC_USEFUL}
+
+## set PROMPT
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+
+zstyle ':vcs_info:*' formats '%F{green}(%b)%f'
+zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f'
+
+function _update_vcs_info_msg() {
+  LANG=en_US.UTF-8 vcs_info
+  PROMPT="%{${fg[yellow]}%}[%D{%Y/%m/%d} %*]%{${reset_color}%} %{${fg[magenta]}%}%n@%m%{${reset_color}%} %{${fg[cyan]}%}%~%{${reset_color}%} ${vcs_info_msg_0_}
+%# "
+}
+
+add-zsh-hook precmd _update_vcs_info_msg
+
+## set direnv
+if which direnv > /dev/null 2>&1; then
+  export EDITOR=vim
+  eval "$(direnv hook zsh)"
+fi
+
+## set exa
+if which exa > /dev/null 2>&1; then
+  alias ls='exa'
+  alias ll='exa -lah --git --time-style full-iso'
+fi
+
+## set rust
+if which cargo > /dev/null 2>&1; then
+  export CARGO_HOME="${HOME}/.cargo"
+  export PATH="${CARGO_HOME}/bin:${PATH}"
+fi
+
+## set ghq
+if which ghq > /dev/null 2>&1; then
+  Set-GitLocation () {
+    GHQROOT="$(ghq root)"
+    GHQDIR="$(ghq list | peco)"
+    test -z "${GHQDIR}" && return
+    test -d "${GHQROOT}/${GHQDIR}" || return
+    cd ${GHQROOT}/${GHQDIR}
+  }
+  alias g='Set-GitLocation'
+fi
+
+## 
+case ${OSTYPE} in
+darwin*)
+  ZSHRC_OSTYPE="${DOTFILE}/config/zshrc.macos"
+  ;;
+linux*)
+  ZSHRC_OSTYPE="${DOTFILE}/config/zshrc.linux"
+  ;;
+esac
+test -f "${ZSHRC_OSTYPE}" && source ${ZSHRC_OSTYPE}
+
