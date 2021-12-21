@@ -28,8 +28,8 @@ fi
 
 ## set exa
 if which exa > /dev/null 2>&1; then
-  alias ls='exa'
-  alias ll='exa -lah --git --time-style full-iso'
+  alias ls='exa -g'
+  alias ll='exa -lagh --git --time-style full-iso'
 fi
 
 ## set rust

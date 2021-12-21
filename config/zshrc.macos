@@ -3,7 +3,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
 export MANPATH="/usr/local/share/man:${MANPATH}"
 
 Check-DisuseFormula () {
-  for package in $(brew list); do
+  for package in $(brew list --formula); do
     echo -n $package: $(brew uses --installed $package | wc -l) | grep " 0"
   done
 }
