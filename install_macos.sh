@@ -15,4 +15,4 @@ brew doctor || exit 1
 brew install python ansible
 
 ## ansible
-sh $(cd $(dirname); pwd)/playbook.sh
+sh $(cd $(dirname); pwd)/macOS/playbook.sh
