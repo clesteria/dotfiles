@@ -4,5 +4,5 @@
   roles:
     - defaults
     - homebrew
-#    - zsh
     - mas
+

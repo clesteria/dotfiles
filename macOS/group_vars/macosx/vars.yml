@@ -31,14 +31,10 @@ homebrew_packages:
 homebrew_cask_packages:
   - name: appcleaner
   - name: powershell
-  - name: steam
   - name: iina
   - name: the-unarchiver
   - name: google-japanese-ime
-  - name: obs
   - name: discord
-  - name: kindle
-  - name: docker
 
 mac_apps:
   - id: 411213048
@@ -70,3 +66,4 @@ defaults_string:
   - domain: com.apple.screencapture
     key: location
     value: ~/Pictures/
+
