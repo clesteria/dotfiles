@@ -1,0 +1,7 @@
+homebrew_cask_packages:
+  - name: appcleaner
+  - name: powershell
+  - name: iina
+  - name: the-unarchiver
+  - name: google-japanese-ime
+  - name: discord

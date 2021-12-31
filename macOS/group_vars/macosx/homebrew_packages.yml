@@ -1,0 +1,33 @@
+homebrew_packages:
+  # init
+  - name: ansible
+  - name: python
+  - name: python3
+  - name: mas
+  # Shell
+  - name: yash
+  # GNU
+  - name: gawk
+  - name: gnu-sed
+  - name: coreutils
+  - name: findutils
+  # Git
+  - name: git
+  - name: ghq
+  # Terminal
+  - name: peco
+  - name: exa
+  - name: tokei
+  - name: pet
+  # develop
+  - name: direnv
+  # Media
+  - name: youtube-dl
+  - name: ffmpeg
+  - name: zopfli
+  # エディタ
+  - name: vim
+  # curl
+  - name: openssl
+  - name: curl
+    option: with-openssl
