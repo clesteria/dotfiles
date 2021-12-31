@@ -1,0 +1,16 @@
+defaults_bool:
+  # iTunesの半分星を有効化
+  - domain: com.apple.iTunes
+    key: allow-half-stars
+  # Dockを自動的に隠す
+  - domain: com.apple.dock
+    key: autohide
+  # Dockの拡大機能を有効化
+  - domain: com.apple.dock
+    key: magnification
+
+defaults_string:
+  # スクリーンショットの場所を変更
+  - domain: com.apple.screencapture
+    key: location
+    value: ~/Pictures/
