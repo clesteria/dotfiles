@@ -29,6 +29,7 @@ homebrew_packages:
   - name: heroku
   - name: azure-cli
   - name: tfenv
+  - name: shellcheck
   # Media
   - name: youtube-dl
   - name: ffmpeg
