@@ -11,6 +11,7 @@ homebrew_packages:
   - name: gnu-sed
   - name: coreutils
   - name: findutils
+  - name: grep
   # Git
   - name: git
   - name: ghq
@@ -19,9 +20,15 @@ homebrew_packages:
   - name: exa
   - name: tokei
   - name: pet
+  - name: jq
+  - name: pwgen
+  - name: moreutils
+  - name: nkf
   # develop
   - name: direnv
   - name: heroku
+  - name: azure-cli
+  - name: tfenv
   # Media
   - name: youtube-dl
   - name: ffmpeg
