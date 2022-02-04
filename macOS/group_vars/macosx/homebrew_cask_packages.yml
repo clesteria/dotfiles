@@ -1,7 +1,14 @@
 homebrew_cask_packages:
+  - name: google-japanese-ime
+  - name: brave-browser
+  - name: blackhole-2ch
+  - name: blackhole-16ch
+  - name: scroll-reverser
   - name: appcleaner
   - name: powershell
   - name: iina
   - name: the-unarchiver
-  - name: google-japanese-ime
   - name: discord
+  - name: itsycal
+  - name: visual-studio-code
+  - name: barrier
