@@ -3,7 +3,7 @@
     domain: '{{ item.domain }}'
     key: '{{ item.key }}'
     type: bool
-    value: true
+    value: '{{ item.value }}'
     state: present
   with_items: '{{ defaults_bool }}'
 
