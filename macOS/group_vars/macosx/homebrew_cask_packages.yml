@@ -8,8 +8,8 @@ homebrew_cask_packages:
 #  - name: powershell
   - name: iina
   - name: the-unarchiver
-  - name: discord
-  - name: itsycal
+#  - name: discord
+#  - name: itsycal
   - name: visual-studio-code
-  - name: barrier
-  - name: clipy
+#  - name: barrier
+#  - name: clipy

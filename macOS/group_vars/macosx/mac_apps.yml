@@ -1,13 +1,15 @@
 mac_apps:
   - id: 411213048
     name: LadioCast
+  - id: 682658836
+    name: GarageBand
   - id: 409201541
     name: Pages
   - id: 409203825
     name: Numbers
   - id: 409183694
     name: Keynote
-  - id: 497799835
-    name: Xcode
-  - id: 682658836
-    name: GarageBand
+  - id: 563362017
+    name: CloudClip Manager
+#  - id: 497799835
+#    name: Xcode

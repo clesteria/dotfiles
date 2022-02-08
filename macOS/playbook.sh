@@ -2,5 +2,6 @@
 
 cd $(dirname $0)
 
-ansible-playbook -i production macosx.yml
+export ansible_python_interpreter="$(which python3)"
 
+ansible-playbook -i production macosx.yml

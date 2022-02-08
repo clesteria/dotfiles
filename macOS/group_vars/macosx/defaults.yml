@@ -2,12 +2,23 @@ defaults_bool:
   # iTunesの半分星を有効化
   - domain: com.apple.iTunes
     key: allow-half-stars
+    value: true
+  # musicの半分星を有効化
+  - domain: com.apple.music
+    key: allow-half-stars
+    value: true
   # Dockを自動的に隠す
   - domain: com.apple.dock
     key: autohide
+    value: true
   # Dockの拡大機能を有効化
   - domain: com.apple.dock
     key: magnification
+    value: true
+  # 仮想デスクトップの並びを勝手に変えるのを抑止
+  - domain: com.apple.dock
+    key: mru-spaces
+    value: false
 
 defaults_string:
   # スクリーンショットの場所を変更
