@@ -1,5 +1,5 @@
 ## set dotfiles root
-DOTFILE="${HOME}/ghq/github.com/glassenthu/dotfiles"
+DOTFILE="$(find ${HOME}/ghq -name "dotfiles" -type d)"
 
 ## set zshrc (via https://gist.github.com/mollifier/4979906)
 ZSHRC_USEFUL="${DOTFILE}/config/zshrc_useful.sh"
@@ -55,7 +55,7 @@ if which ghq > /dev/null 2>&1; then
   alias g='Set-GitLocation'
 fi
 
-## 
+##
 case ${OSTYPE} in
 darwin*)
   ZSHRC_OSTYPE="${DOTFILE}/config/zshrc.macos"
@@ -65,4 +65,3 @@ linux*)
   ;;
 esac
 test -f "${ZSHRC_OSTYPE}" && source ${ZSHRC_OSTYPE}
-
