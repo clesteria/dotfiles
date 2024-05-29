@@ -4,12 +4,7 @@ export MANPATH="/usr/local/share/man:${MANPATH}"
 
 Check-DisuseFormula () {
   for package in $(brew list --formula); do
-    flag=0
-    for define_package in $(awk '$2=="name:" { print $3 }' $(cd $(dirname $(dirname $(readlink -f ~/.zshrc))); pwd)/macOS/group_vars/macosx/homebrew_packages.yml); do
-      test "${package}" = "${define_package}" && flag=1
-    done
-    test ${flag} -ne 0 && continue
-
+    egrep -q "^ +- name: ${package}$" ${DOTFILE}/macOS/group_vars/macosx/homebrew_packages.yml && continue
     echo -n ${package}: $(brew uses --installed ${package} | wc -l) | grep " 0"
   done
 }
