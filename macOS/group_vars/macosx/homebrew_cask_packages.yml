@@ -1,15 +1,19 @@
 homebrew_cask_packages:
-#  - name: google-japanese-ime
+  # Web
   - name: brave-browser
+  - name: discord
+  # Virtual sound device
   - name: blackhole-2ch
   - name: blackhole-16ch
+  # System
   - name: scroll-reverser
   - name: appcleaner
-#  - name: powershell
-  - name: iina
   - name: the-unarchiver
-  - name: discord-canary
-#  - name: itsycal
+  - name: powershell
+  - name: clipy
+  - name: finch
+  # Editor
   - name: visual-studio-code
-#  - name: barrier
-#  - name: clipy
+  # Media
+  - name: iina
+  - name: xnviewmp
