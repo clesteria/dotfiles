@@ -19,6 +19,10 @@ defaults_bool:
   - domain: com.apple.dock
     key: mru-spaces
     value: false
+  # スクリーンショットの影を無効化
+  - domain: com.apple.screencapture
+    key: disable-shadow
+    value: true
 
 defaults_string:
   # スクリーンショットの場所を変更

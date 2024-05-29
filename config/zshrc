@@ -26,10 +26,15 @@ if which direnv > /dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 fi
 
-## set exa
-if which exa > /dev/null 2>&1; then
-  alias ls='exa -g'
-  alias ll='exa -lagh --git --time-style full-iso'
+## set enyenv
+if which anyenv > /dev/null 2>&1; then
+  eval "$(anyenv init -)"
+fi
+
+## set eza
+if which eza > /dev/null 2>&1; then
+  alias ls='eza -g'
+  alias ll='eza -lagh --git --time-style full-iso'
 fi
 
 ## set rust
