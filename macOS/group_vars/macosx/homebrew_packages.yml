@@ -17,23 +17,19 @@ homebrew_packages:
   - name: ghq
   # Terminal
   - name: peco
-  - name: exa
+  - name: eza
   - name: tokei
-  - name: pet
   - name: jq
+  - name: yq
   - name: pwgen
   - name: moreutils
   - name: nkf
-  # develop
-  - name: direnv
-  - name: heroku
-  - name: azure-cli
-  - name: tfenv
-  - name: shellcheck
   # Media
-  - name: youtube-dl
+  - name: yt-dlp
   - name: ffmpeg
   - name: zopfli
+  - name: webp
+  - name: exiftool
   # エディタ
   - name: vim
   # curl
