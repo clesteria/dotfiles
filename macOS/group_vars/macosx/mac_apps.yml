@@ -9,7 +9,7 @@ mac_apps:
     name: Numbers
   - id: 409183694
     name: Keynote
-  - id: 563362017
-    name: CloudClip Manager
-#  - id: 497799835
-#    name: Xcode
+  - id: 497799835
+    name: Xcode
+  - id: 450527929
+    name: Djay

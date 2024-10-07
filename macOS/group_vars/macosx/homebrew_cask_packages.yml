@@ -2,6 +2,7 @@ homebrew_cask_packages:
   # Web
   - name: brave-browser
   - name: discord
+  - name: transmission
   # Virtual sound device
   - name: blackhole-2ch
   - name: blackhole-16ch
@@ -10,10 +11,11 @@ homebrew_cask_packages:
   - name: appcleaner
   - name: the-unarchiver
   - name: powershell
-  - name: clipy
   - name: finch
+  - name: raycast
   # Editor
   - name: visual-studio-code
+  - name: godot
   # Media
   - name: iina
   - name: xnviewmp
