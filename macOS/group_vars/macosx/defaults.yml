@@ -29,3 +29,9 @@ defaults_string:
   - domain: com.apple.screencapture
     key: location
     value: ~/Pictures/
+
+defaults_int:
+  # Fnキーの機能を無効化
+  - domain: com.apple.HIToolbox
+    key: AppleFnUsageType
+    value: 0
