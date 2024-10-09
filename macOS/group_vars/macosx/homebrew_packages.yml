@@ -30,8 +30,10 @@ homebrew_packages:
   - name: zopfli
   - name: webp
   - name: exiftool
-  # エディタ
+  # Editor
   - name: vim
+  # Develop
+  - name: dotnet
   # curl
   - name: openssl
   - name: curl
