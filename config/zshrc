@@ -65,3 +65,7 @@ linux*)
   ;;
 esac
 test -f "${ZSHRC_OSTYPE}" && source ${ZSHRC_OSTYPE}
+
+# .NET Core SDK tools
+export PATH="$PATH:$HOME/.dotnet/tools"
+
