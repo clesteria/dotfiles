@@ -10,7 +10,7 @@ macOS用セットアップファイル。
 
 Windows PowerShell / PowerShell Core用セットアップファイル。
 
-初回実行スクリプトは _install_windows10.ps1_ 。
+初回実行スクリプトは _install_windows.ps1_ 。
 
 Windows以外の環境でPowerShell Coreを使う場合は、_PowerShell.ps1_ を実行する。
 

@@ -13,3 +13,6 @@ mac_apps:
     name: Xcode
   - id: 450527929
     name: Djay
+  - id: 414298354
+    name: ToyViewer
+
