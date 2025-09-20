@@ -14,3 +14,9 @@ Windows PowerShell / PowerShell Core用セットアップファイル。
 
 Windows以外の環境でPowerShell Coreを使う場合は、_PowerShell.ps1_ を実行する。
 
+## シンボリックリンク
+
+_create_link.sh_ を実行して、zshrc等のシンボリックリンクをホームディレクトリに作成。
+
+_delete_link.sh_ を実行して、作成したシンボリックリンクを削除。
+
