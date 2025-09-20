@@ -59,6 +59,9 @@ if which dotnet > /dev/null 2>&1; then
   export PATH="$PATH:$HOME/.dotnet/tools"
 fi
 
+## nim
+export PATH="$HOME/.nimble/bin:$PATH"
+
 ## ghq
 if which ghq > /dev/null 2>&1; then
   Set-GitLocation () {
