@@ -20,42 +20,7 @@ function _update_vcs_info_msg() {
 
 add-zsh-hook precmd _update_vcs_info_msg
 
-## set direnv
-if which direnv > /dev/null 2>&1; then
-  export EDITOR=vim
-  eval "$(direnv hook zsh)"
-fi
-
-## set enyenv
-if which anyenv > /dev/null 2>&1; then
-  eval "$(anyenv init -)"
-fi
-
-## set eza
-if which eza > /dev/null 2>&1; then
-  alias ls='eza -g'
-  alias ll='eza -lagh --git --time-style full-iso'
-fi
-
-## set rust
-if which cargo > /dev/null 2>&1; then
-  export CARGO_HOME="${HOME}/.cargo"
-  export PATH="${CARGO_HOME}/bin:${PATH}"
-fi
-
-## set ghq
-if which ghq > /dev/null 2>&1; then
-  Set-GitLocation () {
-    GHQROOT="$(ghq root)"
-    GHQDIR="$(ghq list | peco)"
-    test -z "${GHQDIR}" && return
-    test -d "${GHQROOT}/${GHQDIR}" || return
-    cd ${GHQROOT}/${GHQDIR}
-  }
-  alias g='Set-GitLocation'
-fi
-
-##
+## Settings by OS
 case ${OSTYPE} in
 darwin*)
   ZSHRC_OSTYPE="${DOTFILE}/config/zshrc.macos"
@@ -66,6 +31,43 @@ linux*)
 esac
 test -f "${ZSHRC_OSTYPE}" && source ${ZSHRC_OSTYPE}
 
-# .NET Core SDK tools
-export PATH="$PATH:$HOME/.dotnet/tools"
+## direnv
+if which direnv > /dev/null 2>&1; then
+  export EDITOR=vim
+  eval "$(direnv hook zsh)"
+fi
+
+## enyenv
+if which anyenv > /dev/null 2>&1; then
+  eval "$(anyenv init -)"
+fi
+
+## eza
+if which eza > /dev/null 2>&1; then
+  alias ls='eza -g'
+  alias ll='eza -lagh --git --time-style full-iso'
+fi
+
+## rust
+if which cargo > /dev/null 2>&1; then
+  export CARGO_HOME="${HOME}/.cargo"
+  export PATH="${CARGO_HOME}/bin:${PATH}"
+fi
+
+## .NET Core SDK
+if which dotnet > /dev/null 2>&1; then
+  export PATH="$PATH:$HOME/.dotnet/tools"
+fi
+
+## ghq
+if which ghq > /dev/null 2>&1; then
+  Set-GitLocation () {
+    GHQROOT="$(ghq root)"
+    GHQDIR="$(ghq list | peco)"
+    test -z "${GHQDIR}" && return
+    test -d "${GHQROOT}/${GHQDIR}" || return
+    cd ${GHQROOT}/${GHQDIR}
+  }
+  alias g='Set-GitLocation'
+fi
 
