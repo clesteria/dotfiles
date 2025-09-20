@@ -3,3 +3,8 @@ if test -e /home/linuxbrew/.linuxbrew/bin/brew; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+## ssh-agent
+if test -d ${HOME}/ghq; then
+  eval "$(ssh-agent -s)"
+fi
+
