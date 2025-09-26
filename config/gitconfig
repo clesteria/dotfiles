@@ -1,0 +1,9 @@
+[includeIf "gitdir:~/ghq/github.com/"]
+  path = ~/.gitconfig_github
+
+[includeIf "gitdir:~/ghq/gitlab.com/"]
+  path = ~/.gitconfig_gitlab
+
+[core]
+  editor = vi
+  quotepath = false
