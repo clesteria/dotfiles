@@ -1,16 +1,16 @@
-﻿# OS判定
+﻿# 変数
 
-[String]$OS = if ( $IsMacOS ) {
-  'macOS'
-}
-elseif ( $IsLinux ) {
-  'Linux'
+if ( $IsWindows ) {
+  [String[]]$Local:ProgramFiles = ($env:ProgramFiles, ${env:ProgramFiles(x86)})
 }
 else {
-  'Windows'
+  [String]$env:COMPUTERNAME = $(uname -n | sed -e "s/\.local$//")
 }
+[String]$Local:ProfileRoot = Split-Path $PROFILE
+[String]$Local:WorkplaceProfile = Join-Path $ProfileRoot 'WorkplaceProfile.ps1'
+[String]$Local:PathDelimiter = if ( $env:PSModulePath -match ';' ) { ';' } else { ':' }
 
-# ScriptBlock変数設定
+# ScriptBlock変数
 
 ## プロンプトの表示切替
 function Switch-Prompt {
@@ -34,7 +34,8 @@ else {
 [ScriptBlock]$Global:Prompt = {
   if ( $Global:DisplayDate ) {
     Write-Host ('{0}[{1}]' -f "`n", (& $Global:DisplayDate)) -ForegroundColor Yellow -NoNewline
-    Write-Host ' <PowerShell>' -ForegroundColor Green -NoNewline
+    Write-Host (' {0}@{1}' -f $env:USER, $env:COMPUTERNAME) -ForegroundColor Magenta -NoNewline
+    Write-Host ' <PowerShell>' -ForegroundColor Blue -NoNewline
     Write-Host (' {0} ' -f $Pwd.ProviderPath.Replace($HOME, '~')) -ForegroundColor Cyan
   }
 
@@ -44,22 +45,6 @@ else {
   else {
     '> '
   }
-}
-
-# 変数設定
-
-[String[]]$Global:ProgramFiles = ($env:ProgramFiles, ${env:ProgramFiles(x86)})
-[String]$Global:ProfileRoot = Split-Path $PROFILE
-[String]$Global:WorkplaceProfile = Join-Path $ProfileRoot 'WorkplaceProfile.ps1'
-[String]$Global:GitPath = '~/Git'
-[String]$Global:PathDelimiter = if ( $env:PSModulePath -match ';' ) { ';' } else { ':' }
-
-## クリップボード格納コマンド統一
-if ( $IsMacOS ) {
-  Set-Alias -Name 'scb' -Value 'pbcopy' -Option AllScope -Scope Global
-}
-elseif ( $IsLinux ) {
-  Set-Alias -Name 'scb' -Value 'xsel -bi' -Option AllScope -Scope Global
 }
 
 # PATH初期値設定
@@ -77,18 +62,22 @@ if ( $IsMacOS ) {
 
 # PATH追加
 
-& {
-  $ErrorActionPreference = 'SilentlyContinue'
-  @(
-    (Split-Path $PROFILE), # Profile
-    ($ProgramFiles | Get-ChildItem -Directory | Where-Object -Property Name -match 'vim' | Get-ChildItem | Where-Object -Property Name -match '^vim').DirectoryName, # vim
-    ('C:\Windows\Microsoft.NET\Framework64' | Get-ChildItem -Directory | Get-ChildItem | Where-Object -Property Name -eq 'csc.exe' | Sort-Object VersionInfo)[-1].DirectoryName # .NET Framework
-  ).ForEach.({
-    if ( $env:PATH.Split($PathDelimiter) -notcontains $_ ) {
-      $env:PATH += ($PathDelimiter + $_)
-    }
-  })
+## 追加用スクリプトブロック(使い終わったら消す)
+[ScriptBlock]$Local:AddPath = {
+  param(
+    [String]$Path
+  ) 
+
+  if ( $env:PATH.Split($Global:PathDelimiter) -notcontains $Path ) {
+    $env:PATH += ($Global:PathDelimiter + $Path)
+  }
 }
+
+## Profile
+& $Local:AddPath -Path $(Split-Path -Path $PROFILE.CurrentUserAllHosts)
+
+## スクリプトブロック削除
+Remove-Variable -Name 'AddPath' -Scope 'Local'
 
 # LOCAL MACHINEとCURRENT USER以外のレジストリをマウント
 
