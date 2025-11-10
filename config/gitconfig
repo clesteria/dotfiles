@@ -7,5 +7,7 @@
 [core]
   editor = vi
   quotepath = false
+  pager =
+
 [init]
   defaultBranch = main

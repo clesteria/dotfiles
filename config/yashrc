@@ -1,0 +1,26 @@
+# load the common customization script.
+. --autoload --no-alias initialization/common
+
+# clear the screen with Ctrl-L.
+bindkey --emacs '\^L' clear-and-redraw-all
+
+## neovim
+which nvim >/dev/null 2>&1 && alias vi="nvim"
+
+## eza
+which eza >/dev/null 2>&1 && alias ls='eza -g'
+
+## nim
+export PATH="${HOME}/.nimble/bin:${PATH}"
+
+## ghq
+if which ghq >/dev/null 2>&1; then
+  function Set-GitLocation() {
+    GHQROOT="$(ghq root)"
+    GHQDIR="$(ghq list | peco)"
+    test -z "${GHQDIR}" && return
+    test -d "${GHQROOT}/${GHQDIR}" || return
+    cd ${GHQROOT}/${GHQDIR}
+  }
+  alias g='Set-GitLocation'
+fi
