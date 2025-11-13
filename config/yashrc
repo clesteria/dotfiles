@@ -1,8 +1,47 @@
-# load the common customization script.
+# ----------------------------------------
+# Common
+# ----------------------------------------
+
+## load the common customization script.
 . --autoload --no-alias initialization/common
 
-# clear the screen with Ctrl-L.
+## clear the screen with Ctrl-L.
 bindkey --emacs '\^L' clear-and-redraw-all
+
+# ----------------------------------------
+# Prompt
+# ----------------------------------------
+
+## Prompt
+YASH_PS1='\fy[${_now}] \fm.${LOGNAME}@${HOSTNAME%%.*} \fb.<${SHELL##*/}> \fc.${_cwd} \fg.${_vcs_info} ${{?:/0/}:+\\fr.$?\\fd. }${{SHLVL-0}:/1}\n\fd.\$ '
+YASH_PS1R=''
+
+## datetime
+_update_datetime() {
+  {
+    read --raw-mode _now
+  } <(
+    date '+%Y/%m/%d_%H:%M:%S'
+  )
+}
+PROMPT_COMMAND=("$PROMPT_COMMAND" '_update_datetime')
+
+## current directory
+_update_cwd() {
+  {
+    read --raw-mode _cwd
+  } <(
+    echo ${PWD/${HOME}/\~}
+  )
+}
+PROMPT_COMMAND=("$PROMPT_COMMAND" '_update_cwd')
+
+# ----------------------------------------
+# Application
+# ----------------------------------------
+
+## locale
+export LC_CTYPE="ja_JP.UTF-8"
 
 ## neovim
 which nvim >/dev/null 2>&1 && alias vi="nvim"
