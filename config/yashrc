@@ -9,6 +9,15 @@
 bindkey --emacs '\^L' clear-and-redraw-all
 
 # ----------------------------------------
+# WSL
+# ----------------------------------------
+
+if uname -r | grep -Eq "microsoft-standard-WSL2$"; then
+  export WINHOME="${PWD}"
+  alias wcd="cd ${WINHOME}"
+fi
+
+# ----------------------------------------
 # Prompt
 # ----------------------------------------
 
