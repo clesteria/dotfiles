@@ -5,7 +5,7 @@
   path = ~/.gitconfig_gitlab
 
 [core]
-  editor = vi
+  editor = nvim
   quotepath = false
   pager =
 

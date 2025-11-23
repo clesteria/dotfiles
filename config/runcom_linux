@@ -1,0 +1,21 @@
+# ----------------------------------------
+# homebrew
+# ----------------------------------------
+
+if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+Check-DisuseFormula () {
+  for package in $(brew list --formula); do
+    echo -n ${package}: $(brew uses --installed ${package} | wc -l) | grep " 0"
+  done
+}
+
+# ----------------------------------------
+# keychain & ssh-agent
+# ----------------------------------------
+
+if [ -d $(ghq root) ]; then
+  eval "$(ssh-agent -s)"
+fi

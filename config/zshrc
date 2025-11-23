@@ -1,9 +1,32 @@
+# ----------------------------------------
+# Common
+# ----------------------------------------
+
 ## set dotfiles root
-DOTFILE="$(find ${HOME}/ghq -name "dotfiles" -type d)"
+test -d "${HOME}/ghq" && DOTFILE="$(find ${HOME}/ghq -name "dotfiles" -type d)"
 
 ## set zshrc (via https://gist.github.com/mollifier/4979906)
 ZSHRC_USEFUL="${DOTFILE}/config/zshrc_useful.sh"
 test -f "${ZSHRC_USEFUL}" && source ${ZSHRC_USEFUL}
+
+# ----------------------------------------
+# OS-specific settings
+# ----------------------------------------
+
+## Settings by OS
+case ${OSTYPE} in
+darwin*)
+  RUNCOM="${DOTFILE}/config/runcom_macos"
+  ;;
+linux*)
+  RUNCOM="${DOTFILE}/config/runcom_linux"
+  ;;
+esac
+test -f ${RUNCOM} && source ${RUNCOM}
+
+# ----------------------------------------
+# Prompt
+# ----------------------------------------
 
 ## set PROMPT
 autoload -Uz vcs_info
@@ -14,64 +37,20 @@ zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f'
 
 function _update_vcs_info_msg() {
   LANG=en_US.UTF-8 vcs_info
-  CURRENTSHELL=$(echo $SHELL | sed -e "s:.*/::")
+  CURRENTSHELL=$(ps -p $$ | awk '$1~/'$$'/ { print $NF }' | sed -e "s/[^a-zA-Z]//g")
   PROMPT="%{${fg[yellow]}%}[%D{%Y/%m/%d} %*]%{${reset_color}%} %{${fg[magenta]}%}%n@%m%{${reset_color}%} %{${fg[blue]}%}<${CURRENTSHELL}>%{${reset_color}%} %{${fg[cyan]}%}%~%{${reset_color}%} ${vcs_info_msg_0_}
 %# "
 }
 
 add-zsh-hook precmd _update_vcs_info_msg
 
-## Settings by OS
-case ${OSTYPE} in
-darwin*)
-  ZSHRC_OSTYPE="${DOTFILE}/config/zshrc.macos"
-  ;;
-linux*)
-  ZSHRC_OSTYPE="${DOTFILE}/config/zshrc.linux"
-  ;;
-esac
-test -f "${ZSHRC_OSTYPE}" && source ${ZSHRC_OSTYPE}
+# ----------------------------------------
+# Prompt
+# ----------------------------------------
 
 ## direnv
 if which direnv > /dev/null 2>&1; then
-  export EDITOR=vim
   eval "$(direnv hook zsh)"
 fi
 
-## enyenv
-if which anyenv > /dev/null 2>&1; then
-  eval "$(anyenv init -)"
-fi
-
-## eza
-if which eza > /dev/null 2>&1; then
-  alias ls='eza -g'
-  alias ll='eza -lagh --git --time-style full-iso'
-fi
-
-## rust
-if which cargo > /dev/null 2>&1; then
-  export CARGO_HOME="${HOME}/.cargo"
-  export PATH="${CARGO_HOME}/bin:${PATH}"
-fi
-
-## .NET Core SDK
-if which dotnet > /dev/null 2>&1; then
-  export PATH="${HOME}/.dotnet/tools:${PATH}"
-fi
-
-## nim
-export PATH="${HOME}/.nimble/bin:${PATH}"
-
-## ghq
-if which ghq > /dev/null 2>&1; then
-  Set-GitLocation () {
-    GHQROOT="$(ghq root)"
-    GHQDIR="$(ghq list | peco)"
-    test -z "${GHQDIR}" && return
-    test -d "${GHQROOT}/${GHQDIR}" || return
-    cd ${GHQROOT}/${GHQDIR}
-  }
-  alias g='Set-GitLocation'
-fi
-
+test -e ${DOTFILE}/config/runcom_applications && source ${DOTFILE}/config/runcom_applications

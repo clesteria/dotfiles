@@ -1,0 +1,72 @@
+# ----------------------------------------
+# Editor
+# ----------------------------------------
+
+## vim
+export EDITOR="vim"
+
+## neovim
+if which nvim >/dev/null 2>&1; then
+  alias vi="nvim"
+  alias vim="nvim"
+fi
+
+# ----------------------------------------
+# Alternative default command
+# ----------------------------------------
+
+## eza
+if which eza > /dev/null 2>&1; then
+  alias ls='eza -g'
+  alias ll='eza -lagh --git --time-style full-iso'
+fi
+
+## bat
+if which bat > /dev/null 2>&1; then
+  export BAT_PAGER="cat"
+fi
+
+# ----------------------------------------
+# env
+# ----------------------------------------
+
+## enyenv
+if which anyenv > /dev/null 2>&1; then
+  eval "$(anyenv init -)"
+fi
+
+# ----------------------------------------
+# Programming language
+# ----------------------------------------
+
+## nim
+if which nimble >/dev/null 2>&1; then
+  export PATH="${HOME}/.nimble/bin:${PATH}"
+fi
+
+## rust
+if which cargo > /dev/null 2>&1; then
+  export CARGO_HOME="${HOME}/.cargo"
+  export PATH="${CARGO_HOME}/bin:${PATH}"
+fi
+
+## .NET Core SDK
+if which dotnet > /dev/null 2>&1; then
+  export PATH="${HOME}/.dotnet/tools:${PATH}"
+fi
+
+# ----------------------------------------
+# homebrew
+# ----------------------------------------
+
+## ghq
+if which ghq peco > /dev/null 2>&1; then
+  function Set-GitLocation () {
+    GHQROOT="$(ghq root)"
+    GHQDIR="$(ghq list | peco)"
+    test -z "${GHQDIR}" && return
+    test -d "${GHQROOT}/${GHQDIR}" || return
+    cd ${GHQROOT}/${GHQDIR}
+  }
+  alias g='Set-GitLocation'
+fi
