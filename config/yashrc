@@ -8,10 +8,26 @@
 ## clear the screen with Ctrl-L.
 bindkey --emacs '\^L' clear-and-redraw-all
 
+## set dotfiles root
+test -d "${HOME}/ghq" && DOTFILE="$(find ${HOME}/ghq -name "dotfiles" -type d)"
+
 # ----------------------------------------
-# WSL
+# OS-specific settings
 # ----------------------------------------
 
+## load .*shrc file
+case "$(uname -o)" in
+Darwin)
+  RUNCOM="${DOTFILE}/config/runcom_macos"
+  ;;
+GNU/Linux)
+  RUNCOM="${DOTFILE}/config/runcom_linux"
+  ;;
+esac
+
+test -e ${RUNCOM} && . ${RUNCOM}
+
+## WSL
 if uname -r | grep -Eq "microsoft-standard-WSL2$"; then
   export WINHOME="${PWD}"
   alias wcd="cd ${WINHOME}"
@@ -22,7 +38,7 @@ fi
 # ----------------------------------------
 
 ## Prompt
-YASH_PS1='\fy[${_now}] \fm.${LOGNAME}@${HOSTNAME%%.*} \fb.<${SHELL##*/}> \fc.${_cwd} \fg.${_vcs_info} ${{?:/0/}:+\\fr.$?\\fd. }${{SHLVL-0}:/1}\n\fd.\$ '
+YASH_PS1='\fy[${_now}] \fm.${LOGNAME}@${HOSTNAME%%.*} \fb.<${_shell}> \fc.${_cwd} \fg.${_vcs_info} ${{?:/0/}:+\\fr.$?\\fd. }${{SHLVL-0}:/1}\n\fd.\$ '
 YASH_PS1R=''
 
 ## datetime
@@ -45,30 +61,18 @@ _update_cwd() {
 }
 PROMPT_COMMAND=("$PROMPT_COMMAND" '_update_cwd')
 
+## current shell
+_update_shell() {
+  {
+    read --raw-mode _shell
+  } <(
+    ps -p $$ | awk '$1~/'$$'/ { print $NF }' | sed -e "s/[^a-zA-Z]//g"
+  )
+}
+PROMPT_COMMAND=("$PROMPT_COMMAND" '_update_shell')
+
 # ----------------------------------------
 # Application
 # ----------------------------------------
 
-## locale
-export LC_CTYPE="ja_JP.UTF-8"
-
-## neovim
-which nvim >/dev/null 2>&1 && alias vi="nvim"
-
-## eza
-which eza >/dev/null 2>&1 && alias ls='eza -g'
-
-## nim
-export PATH="${HOME}/.nimble/bin:${PATH}"
-
-## ghq
-if which ghq >/dev/null 2>&1; then
-  function Set-GitLocation() {
-    GHQROOT="$(ghq root)"
-    GHQDIR="$(ghq list | peco)"
-    test -z "${GHQDIR}" && return
-    test -d "${GHQROOT}/${GHQDIR}" || return
-    cd ${GHQROOT}/${GHQDIR}
-  }
-  alias g='Set-GitLocation'
-fi
+test -e ${DOTFILE}/config/runcom_applications && . ${DOTFILE}/config/runcom_applications
