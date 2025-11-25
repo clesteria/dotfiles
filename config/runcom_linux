@@ -6,7 +6,7 @@ if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-Check-DisuseFormula () {
+function Check-DisuseFormula () {
   for package in $(brew list --formula); do
     echo -n ${package}: $(brew uses --installed ${package} | wc -l) | grep " 0"
   done
@@ -15,6 +15,15 @@ Check-DisuseFormula () {
 # ----------------------------------------
 # keychain & ssh-agent
 # ----------------------------------------
+
+## keychain
+
+if which keychain >/dev/null 2>&1; then
+  /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519
+  . ~/.keychain/$(uname -n)-sh
+fi
+
+## ssh
 
 if [ -d $(ghq root) ]; then
   eval "$(ssh-agent -s)"
