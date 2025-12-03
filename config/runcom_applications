@@ -45,14 +45,19 @@ if which nimble >/dev/null 2>&1; then
 fi
 
 ## rust
-if which cargo > /dev/null 2>&1; then
+if which cargo >/dev/null 2>&1; then
   export CARGO_HOME="${HOME}/.cargo"
   export PATH="${CARGO_HOME}/bin:${PATH}"
 fi
 
 ## .NET Core SDK
-if which dotnet > /dev/null 2>&1; then
+if which dotnet >/dev/null 2>&1; then
   export PATH="${HOME}/.dotnet/tools:${PATH}"
+fi
+
+## nodebrew
+if which nodebrew >/dev/null 2>&1; then
+  export PATH="${HOME}/.nodebrew/current/bin:${PATH}"
 fi
 
 # ----------------------------------------
