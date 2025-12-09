@@ -40,6 +40,10 @@ fi
 # ----------------------------------------
 
 ## nim
+if which choosenim >/dev/null 2>&1; then
+  export PATH="$(choosenim show path)/bin:${PATH}"
+fi
+
 if which nimble >/dev/null 2>&1; then
   export PATH="${HOME}/.nimble/bin:${PATH}"
 fi
