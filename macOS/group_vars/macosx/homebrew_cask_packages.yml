@@ -11,11 +11,12 @@ homebrew_cask_packages:
   - name: appcleaner
   - name: the-unarchiver
   - name: powershell
-  - name: finch
   - name: raycast
+  - name: wezterm
   # Editor
   - name: visual-studio-code
   - name: godot
   # Media
   - name: iina
-  - name: xnviewmp
+  - name: krita
+  - name: obs
