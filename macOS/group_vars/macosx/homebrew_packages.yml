@@ -15,25 +15,39 @@ homebrew_packages:
   # Git
   - name: git
   - name: ghq
+  - name: gh
   # Terminal
   - name: peco
-  - name: eza
   - name: tokei
   - name: jq
   - name: yq
   - name: pwgen
   - name: moreutils
   - name: nkf
+  - name: mcat
+  # Alternate CLI
+  - name: eza
+  - name: bat
+  - name: ripgrep
   # Media
   - name: yt-dlp
   - name: ffmpeg
   - name: zopfli
   - name: webp
   - name: exiftool
+  - name: pngquant
   # Editor
-  - name: vim
+  - name: neovim
   # Develop
+  - name: nim
   - name: dotnet
+  - name: cmake
+  - name: nodebrew
+  - name: direnv
+  # Web
+  - name: ddgr
+  - name: scraps
+  - name: cloudflared
   # curl
   - name: openssl
   - name: curl
