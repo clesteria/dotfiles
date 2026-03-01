@@ -46,7 +46,7 @@ _update_datetime() {
   {
     read --raw-mode _now
   } <(
-    date '+%Y/%m/%d_%H:%M:%S'
+    date '+%Y/%m/%d %H:%M:%S'
   )
 }
 PROMPT_COMMAND=("$PROMPT_COMMAND" '_update_datetime')
@@ -66,7 +66,7 @@ _update_shell() {
   {
     read --raw-mode _shell
   } <(
-    ps -p $$ | awk '$1~/'$$'/ { print $NF }' | sed -e "s/[^a-zA-Z]//g"
+    ps -p $$ | awk '$1~/'$$'/ { print $NF }' | sed -e "s/^\/..*\///g" -e "s/[^a-zA-Z]//g"
   )
 }
 PROMPT_COMMAND=("$PROMPT_COMMAND" '_update_shell')
