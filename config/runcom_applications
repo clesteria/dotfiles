@@ -6,7 +6,7 @@
 export EDITOR="vim"
 
 ## neovim
-if which nvim >/dev/null 2>&1; then
+if command -v nvim >/dev/null 2>&1; then
   alias vi="nvim"
   alias vim="nvim"
 fi
@@ -16,13 +16,13 @@ fi
 # ----------------------------------------
 
 ## eza
-if which eza > /dev/null 2>&1; then
+if command -v eza >/dev/null 2>&1; then
   alias ls='eza -g'
   alias ll='eza -lagh --git --time-style full-iso'
 fi
 
 ## bat
-if which bat > /dev/null 2>&1; then
+if command -v bat >/dev/null 2>&1; then
   export BAT_PAGER="cat"
 fi
 
@@ -31,7 +31,7 @@ fi
 # ----------------------------------------
 
 ## enyenv
-if which anyenv > /dev/null 2>&1; then
+if command -v anyenv >/dev/null 2>&1; then
   eval "$(anyenv init -)"
 fi
 
@@ -40,27 +40,27 @@ fi
 # ----------------------------------------
 
 ## nim
-if which choosenim >/dev/null 2>&1; then
+if command -v choosenim >/dev/null 2>&1; then
   export PATH="$(choosenim show path)/bin:${PATH}"
 fi
 
-if which nimble >/dev/null 2>&1; then
+if command -v nimble >/dev/null 2>&1; then
   export PATH="${HOME}/.nimble/bin:${PATH}"
 fi
 
 ## rust
-if which cargo >/dev/null 2>&1; then
+if command -v cargo >/dev/null 2>&1; then
   export CARGO_HOME="${HOME}/.cargo"
   export PATH="${CARGO_HOME}/bin:${PATH}"
 fi
 
 ## .NET Core SDK
-if which dotnet >/dev/null 2>&1; then
+if command -v dotnet >/dev/null 2>&1; then
   export PATH="${HOME}/.dotnet/tools:${PATH}"
 fi
 
 ## nodebrew
-if which nodebrew >/dev/null 2>&1; then
+if command -v nodebrew >/dev/null 2>&1; then
   export PATH="${HOME}/.nodebrew/current/bin:${PATH}"
 fi
 
@@ -69,7 +69,7 @@ fi
 # ----------------------------------------
 
 ## ghq
-if which ghq peco > /dev/null 2>&1; then
+if command -v ghq peco > /dev/null 2>&1; then
   function Set-GitLocation () {
     GHQROOT="$(ghq root)"
     GHQDIR="$(ghq list | peco)"

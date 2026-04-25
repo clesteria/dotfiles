@@ -18,7 +18,7 @@ function Check-DisuseFormula () {
 
 ## keychain
 
-if which keychain >/dev/null 2>&1; then
+if command -v keychain >/dev/null 2>&1; then
   /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519
   . ~/.keychain/$(uname -n)-sh
 fi
