@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 ## xcode command line tools
-xcode-select --install
+if ! xcode-select -p >/dev/null 2>&1; then
+  xcode-select --install
+fi
 
 ## homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -15,4 +17,7 @@ brew doctor || exit 1
 brew install python ansible
 
 ## ansible
-sh $(cd $(dirname $0); pwd)/macOS/playbook.sh
+sh $(
+  cd $(dirname $0)
+  pwd
+)/macOS/playbook.sh
