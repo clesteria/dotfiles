@@ -18,7 +18,6 @@ homebrew_packages:
   - name: ghq
   - name: gh
   # Terminal
-  - name: peco
   - name: tokei
   - name: jq
   - name: yq

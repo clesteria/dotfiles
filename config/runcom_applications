@@ -69,10 +69,10 @@ fi
 # ----------------------------------------
 
 ## ghq
-if command -v ghq peco > /dev/null 2>&1; then
+if command -v ghq sk > /dev/null 2>&1; then
   function Set-GitLocation () {
     GHQROOT="$(ghq root)"
-    GHQDIR="$(ghq list | peco)"
+    GHQDIR="$(ghq list | sk)"
     test -z "${GHQDIR}" && return
     test -d "${GHQROOT}/${GHQDIR}" || return
     cd ${GHQROOT}/${GHQDIR}
