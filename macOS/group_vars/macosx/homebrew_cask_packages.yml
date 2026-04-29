@@ -1,6 +1,7 @@
 homebrew_cask_packages:
   # Web
   - name: brave-browser
+  - name: zen
   - name: discord
   - name: transmission
   # Virtual sound device
@@ -10,12 +11,12 @@ homebrew_cask_packages:
   - name: scroll-reverser
   - name: appcleaner
   - name: the-unarchiver
-  - name: powershell
   - name: raycast
   - name: wezterm
   # Editor
   - name: visual-studio-code
   - name: godot
+  - name: unity-hub
   # Media
   - name: iina
   - name: krita

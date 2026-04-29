@@ -6,6 +6,7 @@ homebrew_packages:
   - name: mas
   # Shell
   - name: yash
+  - name: powershell
   # GNU
   - name: gawk
   - name: gnu-sed
@@ -25,6 +26,7 @@ homebrew_packages:
   - name: moreutils
   - name: nkf
   - name: mcat
+  - name: sk
   # Alternate CLI
   - name: eza
   - name: bat
@@ -48,6 +50,9 @@ homebrew_packages:
   - name: ddgr
   - name: scraps
   - name: cloudflared
+  # Archiver
+  - name: cabextract
+  - name: sevenzip
   # curl
   - name: openssl
   - name: curl
