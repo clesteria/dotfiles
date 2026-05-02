@@ -45,6 +45,7 @@ homebrew_packages:
   - name: cmake
   - name: nodebrew
   - name: direnv
+  - name: sequoia-sq
   # Web
   - name: ddgr
   - name: scraps

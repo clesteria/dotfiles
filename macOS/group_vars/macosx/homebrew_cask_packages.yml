@@ -13,6 +13,7 @@ homebrew_cask_packages:
   - name: the-unarchiver
   - name: raycast
   - name: wezterm
+  - name: secretive
   # Editor
   - name: visual-studio-code
   - name: godot
