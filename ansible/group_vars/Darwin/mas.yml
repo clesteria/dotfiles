@@ -1,6 +1,4 @@
 mac_apps:
-  - id: 411213048
-    name: LadioCast
   - id: 682658836
     name: GarageBand
   - id: 409201541
@@ -12,7 +10,5 @@ mac_apps:
   - id: 497799835
     name: Xcode
   - id: 450527929
-    name: Djay
-  - id: 414298354
-    name: ToyViewer
+    name: "Djay Pro"
 

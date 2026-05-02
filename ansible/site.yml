@@ -1,0 +1,13 @@
+- hosts: localhost
+  connection: local
+  gather_facts: true
+  tasks:
+    - name: Apply macOS configuration
+      import_role:
+        name: macos
+      when: ansible_facts['os_family'] == "Darwin"
+
+    - name: Apply Linux configuration
+      debug:
+        msg: "Linux configuration is not implemented yet."
+      when: ansible_facts['os_family'] != "Darwin"

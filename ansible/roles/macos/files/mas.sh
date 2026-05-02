@@ -7,7 +7,7 @@ APPID=$1
 test $# -eq 1 || exit 2
 
 ## App check
-mas list 2>/dev/null | grep -q "^${APPID} " && exit 0
+mas list 2>/dev/null | grep -q "^\s*${APPID}\s" && exit 0
 
 ## App install
 mas install ${APPID} >/dev/null 2>&1 || exit 3

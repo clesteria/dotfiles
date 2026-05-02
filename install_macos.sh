@@ -20,4 +20,4 @@ brew install python ansible
 sh $(
   cd $(dirname $0)
   pwd
-)/macOS/playbook.sh
+)/ansible/playbook.sh
