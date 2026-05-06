@@ -3,10 +3,10 @@
 # ----------------------------------------
 
 ## set dotfiles root
-test -d "${HOME}/ghq" && DOTFILE="$(find ${HOME}/ghq -name "dotfiles" -type d)"
+test -d "${HOME}/ghq" && DOTFILE="$(find ${HOME}/ghq -name "dotfiles" -type d)" || DOTFILE="${HOME}/.dotfiles"
 
 ## set zshrc (via https://gist.github.com/mollifier/4979906)
-ZSHRC_USEFUL="${DOTFILE}/config/zshrc_useful.sh"
+ZSHRC_USEFUL="${DOTFILE}/sh/zshrc_useful.sh"
 test -f "${ZSHRC_USEFUL}" && source ${ZSHRC_USEFUL}
 
 # ----------------------------------------
@@ -14,14 +14,7 @@ test -f "${ZSHRC_USEFUL}" && source ${ZSHRC_USEFUL}
 # ----------------------------------------
 
 ## Settings by OS
-case ${OSTYPE} in
-darwin*)
-  RUNCOM="${DOTFILE}/config/runcom_macos"
-  ;;
-linux*)
-  RUNCOM="${DOTFILE}/config/runcom_linux"
-  ;;
-esac
+RUNCOM="${DOTFILE}/sh/$(uname -s | tr "[:upper:]" "[:lower:]")_shrc"
 test -f ${RUNCOM} && source ${RUNCOM}
 
 # ----------------------------------------
@@ -53,4 +46,8 @@ if command -v direnv >/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 fi
 
-test -e ${DOTFILE}/config/runcom_applications && source ${DOTFILE}/config/runcom_applications
+# ----------------------------------------
+# Prompt
+# ----------------------------------------
+
+test -e ${DOTFILE}/sh/apps_shrc && source ${DOTFILE}/sh/apps_shrc

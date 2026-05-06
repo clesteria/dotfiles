@@ -17,8 +17,8 @@ fi
 
 ## eza
 if command -v eza >/dev/null 2>&1; then
-  alias ls='eza -g'
-  alias ll='eza -lagh --git --time-style full-iso'
+  alias ls='eza -g --group-directories-first'
+  alias ll='eza -lagh --group-directories-first --git --time-style full-iso'
 fi
 
 ## bat
@@ -31,11 +31,7 @@ fi
 # ----------------------------------------
 
 ## nim
-if command -v choosenim >/dev/null 2>&1; then
-  export PATH="$(choosenim show path)/bin:${PATH}"
-fi
-
-if command -v nimble >/dev/null 2>&1; then
+if test -d "${HOME}/.nimble/bin"; then
   export PATH="${HOME}/.nimble/bin:${PATH}"
 fi
 
@@ -50,13 +46,14 @@ if command -v dotnet >/dev/null 2>&1; then
   export PATH="${HOME}/.dotnet/tools:${PATH}"
 fi
 
-## nodebrew
-if command -v nodebrew >/dev/null 2>&1; then
-  export PATH="${HOME}/.nodebrew/current/bin:${PATH}"
+## node.js(nvm)
+if test -s "${HOME}/.nvm/nvm.sh"; then
+  export NVM_DIR="${HOME}/.nvm"
+  . ${NVM_DIR}/nvm.sh 2>/dev/null
 fi
 
 # ----------------------------------------
-# homebrew
+# Git
 # ----------------------------------------
 
 ## ghq

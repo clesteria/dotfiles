@@ -1,0 +1,46 @@
+[
+  {
+    "Category": "macOS",
+    "Packages": ["mas"]
+  },
+  {
+    "Category": "Shell",
+    "Packages": ["yash", "powershell"]
+  },
+  {
+    "Category": "GNU",
+    "Packages": ["gawk", "gsed", "coreutils", "findutils", "grep"]
+  },
+  {
+    "Category": "Git",
+    "Packages": ["git", "ghq"]
+  },
+  {
+    "Category": "Terminal",
+    "Packages": ["tokei", "jq", "yq", "pwgen", "moreutils", "nkf"]
+  },
+  {
+    "Category": "Rust CLI",
+    "Packages": ["eza +git", "bat", "ripgrep", "skim", "sequoia-sq"]
+  },
+  {
+    "Category": "Media",
+    "Packages": ["yt-dlp +ffmpeg", "ffmpeg", "zopfli", "webp", "exiftool", "pngquant"]
+  },
+  {
+    "Category": "Editor",
+    "Packages": ["neovim"]
+  },
+  {
+    "Category": "Develop",
+    "Packages": ["dotnet-cli", "cmake"]
+  },
+  {
+    "Category": "Web",
+    "Packages": ["cloudflared", "curl +ssl"]
+  },
+  {
+    "Category": "Archiver",
+    "Packages": ["cabextract", "7zip"]
+  }
+]

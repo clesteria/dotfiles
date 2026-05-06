@@ -1,5 +1,0 @@
-[Darwin]
-localhost ansible_connection=local
-
-[Debian]
-# localhost ansible_connection=local

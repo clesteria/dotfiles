@@ -1,22 +1,29 @@
 ﻿# dotfiles
 
-## macOS
+## Installation
 
-macOS用セットアップファイル。
+### macOS, Linux
 
-初回実行スクリプトは _install_macos.sh_ 。
+```sh 
+bash <(curl -LSs https://raw.githubusercontent.com/clesteria/dotfiles/main/bootstrap.sh)
+```
 
-## PowerShell
+### Windows
 
-Windows PowerShell / PowerShell Core用セットアップファイル。
+```sh
+.\setup.ps1
+```
 
-初回実行スクリプトは _install_windows.ps1_ 。
+## Tasks
 
-Windows以外の環境でPowerShell Coreを使う場合は、_PowerShell.ps1_ を実行する。
+```sh
+nim portsInstall # Install MacPorts (macOS)
+nim brewInstall # Install Homebrew (macOS)
+```
 
-## シンボリックリンク
-
-_create_link.sh_ を実行して、zshrc等のシンボリックリンクをホームディレクトリに作成。
-
-_delete_link.sh_ を実行して、作成したシンボリックリンクを削除。
-
+```sh
+nim symlink # Deploy config files (macOS,Linux)
+nim defaults # Apply macOS settings (macOS)
+nim ports # Install CLI Tools (macOS)
+nim brew # Install GUI Tools (macOS)
+```

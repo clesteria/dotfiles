@@ -1,0 +1,136 @@
+[
+  {
+    "description": "iTunes: 半分星を有効化",
+    "domain": "com.apple.iTunes",
+    "key": "allow-half-stars",
+    "type": "bool",
+    "value": "true"
+  },
+  {
+    "description": "ミュージック.app: 半分星を有効化",
+    "domain": "com.apple.iTunes",
+    "domain": "com.apple.music",
+    "key": "allow-half-stars",
+    "type": "bool",
+    "value": "true"
+  },
+  {
+    "description": "サウンド: 通知音",
+    "domain": "NSGlobalDomain",
+    "key": "com.apple.sound.beep.sound",
+    "type": "string",
+    "value": "/System/Library/Sounds/Glass.aiff"
+  },
+  {
+    "description": "サウンド: ユーザインターフェイスのサウンドエフェクトを再生",
+    "domain": "NSGlobalDomain",
+    "key": "com.apple.sound.uiaudio.enabled",
+    "type": "bool",
+    "value": "false"
+  },
+  {
+    "description": "サウンド: 音量を変更するときにフィードバックを再生",
+    "domain": "NSGlobalDomain",
+    "key": "com.apple.sound.beep.feedback",
+    "type": "bool",
+    "value": "false"
+  },
+  {
+    "description": "Finder: パスバーを表示",
+    "domain": "com.apple.finder",
+    "key": "ShowPathbar",
+    "type": "bool",
+    "value": "true"
+  },
+  {
+    "description": "Finder: ステータスバーを表示",
+    "domain": "com.apple.finder",
+    "key": "ShowStatusBar",
+    "type": "bool",
+    "value": "true"
+  },
+  {
+    "description": "Finder: フォルダを常に先頭に表示(名前順)",
+    "domain": "com.apple.finder",
+    "key": "_FXSortFoldersFirst",
+    "type": "bool",
+    "value": "true"
+  },
+  {
+    "description": "Finder: フォルダを常に先頭に表示(デスクトップ)",
+    "domain": "com.apple.finder",
+    "key": "_FXSortFoldersFirstOnDesktop",
+    "type": "bool",
+    "value": "true"
+  },
+  {
+    "description": "Finder: デフォルトをリスト表示にする",
+    "domain": "com.apple.finder",
+    "key": "FXPreferredViewStyle",
+    "type": "string",
+    "value": "Nlsv"
+  },
+  {
+    "description": "拡張子を常に表示",
+    "domain": "NSGlobalDomain",
+    "key": "AppleShowAllExtension",
+    "type": "bool",
+    "value": "true"
+  },
+  {
+    "description": "ファイルシステム: ネットワークドライブでの.DS_Storeの作成抑止",
+    "domain": "com.apple.desktopservices",
+    "key": "DSDontWriteNetworkStores",
+    "type": "bool",
+    "value": "true"
+  },
+  {
+    "description": "Dock: 自動的に非表示",
+    "domain": "com.apple.dock",
+    "key": "autohide",
+    "type": "bool",
+    "value": "true"
+  },
+  {
+    "description": "Dock: アイコンの拡大を有効化",
+    "domain": "com.apple.dock",
+    "key": "magnification",
+    "type": "bool",
+    "value": "true"
+  },
+  {
+    "description": "仮想デスクトップ: 順序の自動変更を抑止",
+    "domain": "com.apple.dock",
+    "key": "mru-spaces",
+    "type": "bool",
+    "value": "false"
+  },
+  {
+    "description": "スクリーンショット: 影の無効化",
+    "domain": "com.apple.screencapture",
+    "key": "disable-shadow",
+    "type": "bool",
+    "value": "true"
+  },
+  {
+    "description": "スクリーンショット: 保存場所",
+    "domain": "com.apple.screencapture",
+    "key": "location",
+    "type": "string",
+    "value": "~/Downloads/"
+  },
+  {
+    "description": "スクリーンショット: ファイル名",
+    "domain": "com.apple.screencapture",
+    "key": "name",
+    "type": "string",
+    "value": "ss"
+  },
+  {
+    "description": "キーボード: Fnキーの機能を無効化(F1等を優先)",
+    "domain": "com.apple.HIToolbox",
+    "key": "AppleFnUsageType",
+    "type": "int",
+    "value": "0"
+  }
+]

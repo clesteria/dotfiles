@@ -1,0 +1,37 @@
+[
+  {
+    "Name": "git",
+    "ProviderName": "Chocolatey",
+    "Force": true
+  },
+  {
+    "Name": "7zip",
+    "ProviderName": "Chocolatey",
+    "Force": true
+  },
+  {
+    "Name": "brave",
+    "ProviderName": "Chocolatey",
+    "Force": true
+  },
+  {
+    "Name": "vscode",
+    "ProviderName": "Chocolatey",
+    "Force": true
+  },
+  {
+    "Name": "choosenim",
+    "ProviderName": "Chocolatey",
+    "Force": true
+  },
+  {
+    "Name": "steam",
+    "ProviderName": "Chocolatey",
+    "Force": true
+  },
+  {
+    "Name": "mpc-be",
+    "ProviderName": "Chocolatey",
+    "Force": true
+  }
+]

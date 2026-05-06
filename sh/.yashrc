@@ -9,22 +9,14 @@
 bindkey --emacs '\^L' clear-and-redraw-all
 
 ## set dotfiles root
-test -d "${HOME}/ghq" && DOTFILE="$(find ${HOME}/ghq -name "dotfiles" -type d)"
+test -d "${HOME}/ghq" && DOTFILE="$(find ${HOME}/ghq -name "dotfiles" -type d)" || DOTFILE="${HOME}/.dotfiles"
 
 # ----------------------------------------
 # OS-specific settings
 # ----------------------------------------
 
 ## load .*shrc file
-case "$(uname -o)" in
-Darwin)
-  RUNCOM="${DOTFILE}/config/runcom_macos"
-  ;;
-GNU/Linux)
-  RUNCOM="${DOTFILE}/config/runcom_linux"
-  ;;
-esac
-
+RUNCOM="${DOTFILE}/sh/$(uname -s | tr [:upper:] [:lower:])_shrc"
 test -e ${RUNCOM} && . ${RUNCOM}
 
 ## WSL
@@ -75,4 +67,4 @@ PROMPT_COMMAND=("$PROMPT_COMMAND" '_update_shell')
 # Application
 # ----------------------------------------
 
-test -e ${DOTFILE}/config/runcom_applications && . ${DOTFILE}/config/runcom_applications
+test -e ${DOTFILE}/sh/apps_shrc && . ${DOTFILE}/sh/apps_shrc
