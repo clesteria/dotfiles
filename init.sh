@@ -11,13 +11,6 @@ if ! command -v git >/dev/null 2>&1; then
   exit 1
 fi
 
-# Clone repository
-DOTDIR="${HOME}/.dotfiles"
-if [ ! -d "${DOTDIR}" ]; then
-  mkdir -p ${DOTDIR}
-  git clone https://${GITDOMAIN}/${GITACCOUNT}/${GITREPO}.git "${DOTDIR}"
-fi
-
 # Setting OS tools
 case "$(uname -s)" in
 Darwin)
@@ -35,18 +28,30 @@ Linux) ;;
   ;;
 esac
 
+# Clone repository
+DOTDIR="${HOME}/.dotfiles"
+if [ ! -d "${DOTDIR}" ]; then
+  mkdir -p ${DOTDIR}
+  git clone https://${GITDOMAIN}/${GITACCOUNT}/${GITREPO}.git "${DOTDIR}"
+fi
+
 # Install nim(choosenim)
+export PATH="${HOME}/.nimble/bin:${PATH}"
 if ! command -v nim >/dev/null 2>&1; then
   echo "Installing Nim via choosenim..."
   curl https://nim-lang.org/choosenim/init.sh -sSf | sh -s -- -y
-  export PATH="${HOME}/.nimble/bin:${PATH}"
   if ! command -v nim >/dev/null 2>&1; then
     echo "nim not found."
-    exit 2
+    exit 3
   fi
 fi
 
-# Run setting task
+# Install MacPorts, Homebrew
 cd ${DOTDIR}
 nim build
+
+# Install Packages / OS Setting
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH="/opt/local/bin:${PATH}"
+cd ${DOTDIR}
 nim install

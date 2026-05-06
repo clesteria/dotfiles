@@ -25,19 +25,19 @@ proc echo_section(msg: string) =
   echo "└" & "─".repeat(width - 1)
 
 proc echo_message(msg: string) =
-  echo "==> " & msg
+  exec("printf \"\\033[1;36m==> " & msg & "\\033[0m\\n\"")
 
 proc echo_info(msg: string) =
-  exec("printf \"\\033[32m" & msg & "\\033[00m\\n\"")
+  exec("printf \"\\033[32m" & msg & "\\033[0m\\n\"")
 
 proc echo_caution(msg: string) =
-  exec("printf \"\\033[33mCaution: " & msg & "\\033[00m\\n\"")
+  exec("printf \"\\033[33mCaution: " & msg & "\\033[0m\\n\"")
 
 proc echo_error(msg: string) =
-  exec("printf \"\\033[31mError: " & msg & "\\033[00m\\n\"")
+  exec("printf \"\\033[31mError: " & msg & "\\033[0m\\n\"")
 
 proc echo_skip(msg: string) =
-  exec("printf \"\\033[34mSkipping: " & msg & "\\033[00m\\n\"")
+  exec("printf \"\\033[34mSkipping: " & msg & "\\033[0m\\n\"")
 
 proc safeExec(cmd: string): tuple[output: string, exitCode: int] =
   result = gorgeEx(cmd)

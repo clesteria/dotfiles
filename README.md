@@ -5,7 +5,7 @@
 ### macOS, Linux
 
 ```sh 
-bash <(curl -LSs https://raw.githubusercontent.com/clesteria/dotfiles/main/bootstrap.sh)
+curl -L https://raw.githubusercontent.com/clesteria/dotfiles/main/init.sh | bash
 ```
 
 ### Windows
@@ -16,10 +16,14 @@ bash <(curl -LSs https://raw.githubusercontent.com/clesteria/dotfiles/main/boots
 
 ## Tasks
 
+### build
+
 ```sh
 nim portsInstall # Install MacPorts (macOS)
 nim brewInstall # Install Homebrew (macOS)
 ```
+
+### install
 
 ```sh
 nim symlink # Deploy config files (macOS,Linux)

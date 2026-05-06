@@ -37,10 +37,14 @@ task portsInstall, "Install MacPorts (macOS only)":
     echo_error "Install failed."
 
 task ports, "Sync MacPorts packages (macOS only)":
-  echo_section "Syncing MacPorts"
+  echo_section "Install packages with MacPorts"
 
   if hostOS != "macosx":
     echo_skip "Not on macOS"
+    return
+
+  if gorgeEx("command -v port").exitCode != 0:
+    echo_skip "MacPorts is not install."
     return
 
   let portsFile = dataDir / "Portsfile.json"
