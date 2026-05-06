@@ -2,7 +2,7 @@
 
 # 変数
 New-Variable -Name 'ProfileRoot' -Value $(Split-Path -Path $PROFILE.CurrentUserAllHosts) -Scope 'Script'
-New-Variable -Name 'InitialRoot' -Value $(Join-Path -Path $PSScriptRoot -ChildPath 'PowerShell') -Scope 'Script'
+New-Variable -Name 'InitialRoot' -Value $(Join-Path -Path $PSScriptRoot -ChildPath '.config/powershell') -Scope 'Script'
 New-Variable -Name 'PathDelimiter' -Value $(if ( $env:PSModulePath -match ';' ) { ';' } else { ':' }) -Scope 'Script'
 
 # Profile用ディレクトリ作成
