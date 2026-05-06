@@ -5,7 +5,7 @@
 ### macOS, Linux
 
 ```sh 
-curl -L https://raw.githubusercontent.com/clesteria/dotfiles/main/init.sh | bash
+curl -sL https://raw.githubusercontent.com/clesteria/dotfiles/main/init.sh | bash
 ```
 
 ### Windows
