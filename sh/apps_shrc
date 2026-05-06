@@ -56,6 +56,11 @@ fi
 # Git
 # ----------------------------------------
 
+## Radicle
+if test -d "${HOME}/.radicle/bin"; then
+  export PATH="${HOME}/.radicle/bin:${PATH}"
+fi
+
 ## ghq
 if command -v ghq sk > /dev/null 2>&1; then
   function Set-GitLocation () {
