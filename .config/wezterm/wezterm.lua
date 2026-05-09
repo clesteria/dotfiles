@@ -51,7 +51,8 @@ config.hide_tab_bar_if_only_one_tab = true
 config.show_tabs_in_tab_bar = true
 config.window_decorations = "RESIZE"
 
-local background_filepath = wezterm.config_dir .. "/bg.png"
+local bgnum = math.random(2)
+local background_filepath = wezterm.config_dir .. "/bg" .. bgnum .. ".png"
 local background_file = io.open(background_filepath)
 if background_file then
 	config.text_background_opacity = 0.4
@@ -61,7 +62,7 @@ if background_file then
 				File = background_filepath,
 			},
 			hsb = {
-				brightness = 0.01,
+				brightness = 0.05,
 				hue = 1.0,
 				saturation = 1.0,
 			},
