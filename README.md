@@ -1,7 +1,12 @@
 ﻿# dotfiles
 
-## Installation
+> [!IMPORTANT]
+> **Radicle is the canonical repository for this project.**
+> The GitHub repository is a read-only mirror. All development and issues are managed on Radicle.
+>
+> - Main: rad:z41sVuFXSYtdG2YpBG5jMPpEdiTGC
 
+## Installation
 ### macOS, Linux
 
 ```sh 
